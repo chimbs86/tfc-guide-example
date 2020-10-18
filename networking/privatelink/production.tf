@@ -3,7 +3,7 @@ resource "aws_vpc" "production_customer" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "production"
+    Name = "production_customer"
   }
 }
 
@@ -13,7 +13,7 @@ resource "aws_subnet" "production_customer_a" {
   cidr_block = "10.1.1.0/24"
 
   tags = {
-    Name = "production"
+    Name = "production_customer"
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_vpc" "production_marketing" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "production"
+    Name = "production_marketing"
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_subnet" "production_marketing_a" {
   cidr_block = "10.4.1.0/24"
 
   tags = {
-    Name = "production"
+    Name = "production_marketing"
   }
 }
 
@@ -43,7 +43,7 @@ resource "aws_vpc" "production_finance" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "production"
+    Name = "production_finance"
   }
 }
 
@@ -53,7 +53,7 @@ resource "aws_subnet" "production_finance_a" {
   cidr_block = "10.5.1.0/24"
 
   tags = {
-    Name = "production"
+    Name = "production_finance"
   }
 }
 
