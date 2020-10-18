@@ -78,6 +78,16 @@ resource "aws_vpc_endpoint_service" "example" {
 }
 
 resource "aws_vpc_endpoint_subnet_association" "sn_ec2" {
-  vpc_endpoint_id = aws_vpc_endpoint_service.example.id
+  vpc_endpoint_id = aws_vpc_endpoint.ec2.id
   subnet_id       = aws_subnet.production_finance_a.id
+}
+
+resource "aws_vpc_endpoint" "ec2" {
+  vpc_id            = aws_vpc.production_finance.id
+  service_name      = aws_vpc_endpoint_service.example.service_name
+  vpc_endpoint_type = "Interface"
+
+
+
+  private_dns_enabled = true
 }
