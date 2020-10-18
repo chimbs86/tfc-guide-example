@@ -38,7 +38,6 @@ resource "aws_lb" "load_balancer" {
   load_balancer_type = "network"
   subnet_mapping {
     subnet_id = aws_subnet.production_customer.id
-    allocation_id = aws_eip.eip_nlb.id
   }
   tags = {
     Environment = "prod"
