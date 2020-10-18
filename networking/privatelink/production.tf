@@ -26,16 +26,12 @@ resource "aws_vpc_peering_connection" "foo" {
     Name = "VPC Peering between production and development"
   }
 }
-resource "aws_eip" "eip_nlb" {
-  tags = {
-    Name = "test-network-lb-eip"
-    Env = "test"
-  }
-}
+
 resource "aws_lb" "load_balancer" {
   name = "test-network-lb"
   #can also be obtained from the variable nlb_config
   load_balancer_type = "network"
+  internal = true
   subnet_mapping {
     subnet_id = aws_subnet.production_customer.id
   }
