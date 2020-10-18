@@ -19,7 +19,7 @@ resource "aws_subnet" "production_customer_a" {
 
 
 resource "aws_vpc" "production_marketing" {
-  cidr_block = "10.1.4.0/16"
+  cidr_block = "10.4.0.0/16"
   instance_tenancy = "default"
 
   tags = {
@@ -29,8 +29,8 @@ resource "aws_vpc" "production_marketing" {
 
 
 resource "aws_subnet" "production_marketing_a" {
-  vpc_id = aws_vpc.production_customer.id
-  cidr_block = "10.1.4.0/24"
+  vpc_id = aws_vpc.production_marketing.id
+  cidr_block = "10.4.1.0/24"
 
   tags = {
     Name = "production"
@@ -39,7 +39,7 @@ resource "aws_subnet" "production_marketing_a" {
 
 
 resource "aws_vpc" "production_finance" {
-  cidr_block = "10.1.5.0/16"
+  cidr_block = "10.5.0.0/16"
   instance_tenancy = "default"
 
   tags = {
@@ -49,8 +49,8 @@ resource "aws_vpc" "production_finance" {
 
 
 resource "aws_subnet" "production_finance_a" {
-  vpc_id = aws_vpc.production_customer.id
-  cidr_block = "10.1.5.0/24"
+  vpc_id = aws_vpc.production_finance.id
+  cidr_block = "10.5.1.0/24"
 
   tags = {
     Name = "production"
