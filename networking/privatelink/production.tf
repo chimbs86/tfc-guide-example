@@ -87,7 +87,26 @@ resource "aws_vpc_endpoint" "ec2" {
   service_name      = aws_vpc_endpoint_service.example.service_name
   vpc_endpoint_type = "Interface"
 
-
+security_group_ids = [aws_default_security_group.default.id]
 
   private_dns_enabled = true
+}
+
+
+resource "aws_default_security_group" "default" {
+  vpc_id = aws_vpc.production_finance.id
+
+  ingress {
+    protocol  = -1
+    self      = true
+    from_port = 0
+    to_port   = 0
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
